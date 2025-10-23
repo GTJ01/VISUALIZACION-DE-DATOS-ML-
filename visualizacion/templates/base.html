@@ -229,6 +229,13 @@
 </head>
 <body>
 
+<!-- 
+Base template que define la estructura común para todas las páginas
+- Incluye estilos y scripts comunes (Bootstrap, FontAwesome, etc.)
+- Define la estructura general: navbar, contenedor y footer
+- Permite extender bloques: title, content, head_extra y body_extra
+-->
+
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
   <div class="container-fluid container-custom">
     <a class="navbar-brand" href="{% url 'visualizacion:inicio' %}">
