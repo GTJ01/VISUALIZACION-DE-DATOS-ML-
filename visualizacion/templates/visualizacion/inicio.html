@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio - Dashboard{% endblock %}
+
+{% block content %}
+  <div class="p-4 p-md-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-3">
+      <h1 class="display-5 fw-bold">
+        <i class="fas fa-chart-line text-primary"></i> 
+        Dashboard de Análisis - Mercado Libre
+      </h1>
+      <p class="col-md-10 fs-5">
+        Análisis Completo de Calidad del Servicio | 150 Respuestas | 2025
+      </p>
+    </div>
+  </div>
+
+  <!-- Problema Principal -->
+  <div class="alert alert-danger text-center mb-4" role="alert">
+    <h4 class="alert-heading"><i class="fas fa-exclamation-triangle"></i> Problemática Identificada</h4>
+    <hr>
+    <h3 class="text-danger fw-bold">{{ problema }}</h3>
+  </div>
+
+  <!-- Estadísticas Clave en Cards -->
+  <div class="row g-4 mb-4">
+    <div class="col-md-3">
+      <div class="card text-white h-100" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="card-body text-center p-4">
+          <i class="fas fa-users fa-3x mb-3"></i>
+          <h2 class="display-4">{{ estadisticas.total_respuestas }}</h2>
+          <p class="fs-6">Total Respuestas</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card text-white h-100" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <div class="card-body text-center p-4">
+          <i class="fas fa-shipping-fast fa-3x mb-3"></i>
+          <h2 class="display-4">{{ estadisticas.porcentaje_problema_entregas|floatformat:1 }}%</h2>
+          <p class="fs-6">Problema Entregas</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card text-white h-100" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+        <div class="card-body text-center p-4">
+          <i class="fas fa-star fa-3x mb-3"></i>
+          <h2 class="display-4">{{ estadisticas.satisfaccion_promedio }}</h2>
+          <p class="fs-6">Satisfacción Promedio /5</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card text-white h-100" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <div class="card-body text-center p-4">
+          <i class="fas fa-shopping-cart fa-3x mb-3"></i>
+          <h2 class="display-4">{{ estadisticas.porcentaje_compradores|floatformat:0 }}%</h2>
+          <p class="fs-6">Compradores Activos</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resumen Ejecutivo -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0"><i class="fas fa-clipboard-list"></i> Resumen Ejecutivo</h5>
+    </div>
+    <div class="card-body">
+      <h6>Hallazgos Principales del Análisis</h6>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <i class="fas fa-exclamation-circle text-danger"></i>
+          <strong>Problema Crítico:</strong> El {{ estadisticas.porcentaje_problema_entregas|floatformat:1 }}% 
+          de usuarios NO recibe sus pedidos siempre/casi siempre a tiempo
+        </li>
+        <li class="list-group-item">
+          <i class="fas fa-chart-pie text-info"></i>
+          <strong>Muestra robusta:</strong> {{ estadisticas.total_respuestas }} respuestas analizadas, 
+          {{ estadisticas.total_compradores }} compradores activos
+        </li>
+        <li class="list-group-item">
+          <i class="fas fa-user-check text-success"></i>
+          <strong>Perfil de usuario:</strong> Edad promedio {{ estadisticas.edad_promedio|floatformat:0 }} años, 
+          diversidad de géneros y regiones
+        </li>
+        <li class="list-group-item">
+          <i class="fas fa-lightbulb text-warning"></i>
+          <strong>Oportunidad:</strong> A pesar del problema de entregas, la satisfacción promedio 
+          es {{ estadisticas.satisfaccion_promedio }}/5, indicando que una mejora logística puede 
+          aumentar significativamente la lealtad
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Navegación rápida -->
+  <div class="row">
+    <div class="col-12">
+      <h4 class="mb-3"><i class="fas fa-compass"></i> Explora el Análisis Completo:</h4>
+    </div>
+    <div class="col-md-4 mb-3">
+      <a href="{% url 'visualizacion:entregas' %}" class="text-decoration-none">
+        <div class="card text-center h-100 border-danger" style="transition: transform 0.3s;">
+          <div class="card-body">
+            <i class="fas fa-truck fa-3x text-danger mb-3"></i>
+            <h5>Análisis de Entregas</h5>
+            <p class="text-muted small">Problema principal y frecuencia de compra</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-4 mb-3">
+      <a href="{% url 'visualizacion:regional' %}" class="text-decoration-none">
+        <div class="card text-center h-100 border-success" style="transition: transform 0.3s;">
+          <div class="card-body">
+            <i class="fas fa-map-marked-alt fa-3x text-success mb-3"></i>
+            <h5>Análisis Regional</h5>
+            <p class="text-muted small">Comparación por regiones de Chile</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-4 mb-3">
+      <a href="{% url 'visualizacion:categorias' %}" class="text-decoration-none">
+        <div class="card text-center h-100 border-info" style="transition: transform 0.3s;">
+          <div class="card-body">
+            <i class="fas fa-tags fa-3x text-info mb-3"></i>
+            <h5>Categorías</h5>
+            <p class="text-muted small">Productos más comprados</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+{% endblock %}

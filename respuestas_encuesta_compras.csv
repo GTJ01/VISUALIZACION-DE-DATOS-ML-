@@ -1,0 +1,51 @@
+ID_Respuesta,Categorías que más compras,Región desde donde compras,Comuna desde donde compras,Pedido llega en fecha estipulada
+1,"Electrónica, Ropa y Accesorios",Región de la Araucanía,Puerto Montt,Rara vez
+2,"Electrónica, Alimentos y Bebidas, Hogar y Decoración",Región de Los Lagos,Talcahuano,No
+3,"Computación, Alimentos y Bebidas, Salud y Belleza",Región de Los Lagos,Maipú,Sí
+4,"Libros y Música, Electrónica",Región de O'Higgins,Ñuñoa,Casi siempre
+5,Libros y Música,Región de Los Lagos,Rancagua,No
+6,"Libros y Música, Muebles",Región del Biobío,Providencia,No
+7,"Libros y Música, Salud y Belleza",Región de Valparaíso,Concón,Rara vez
+8,Computación,Región del Biobío,Santiago,Casi siempre
+9,Libros y Música,Región del Biobío,Rancagua,A veces
+10,"Muebles, Ropa y Accesorios",Región Metropolitana,Puente Alto,No
+11,"Deportes y Fitness, Ropa y Accesorios",Región de Los Lagos,Los Ángeles,Sí
+12,Computación,Región de Antofagasta,Antofagasta,Rara vez
+13,"Electrónica, Juguetes y Juegos, Deportes y Fitness",Región Metropolitana,Villa Alemana,Rara vez
+14,Computación,Región del Maule,Chillán,Casi siempre
+15,"Muebles, Electrónica",Región de Coquimbo,Temuco,A veces
+16,"Ropa y Accesorios, Computación, Juguetes y Juegos",Región del Biobío,Viña del Mar,A veces
+17,"Ropa y Accesorios, Salud y Belleza, Electrónica",Región Metropolitana,Los Ángeles,No
+18,Salud y Belleza,Región del Maule,Santiago,No
+19,"Computación, Salud y Belleza, Juguetes y Juegos",Región de Coquimbo,Antofagasta,Casi siempre
+20,Computación,Región de Los Lagos,Puente Alto,Casi siempre
+21,Juguetes y Juegos,Región de Antofagasta,Rancagua,Rara vez
+22,"Alimentos y Bebidas, Hogar y Decoración",Región de Los Lagos,Talca,Casi siempre
+23,"Deportes y Fitness, Juguetes y Juegos, Computación",Región Metropolitana,Santiago,Sí
+24,"Computación, Alimentos y Bebidas, Salud y Belleza",Región del Biobío,Las Condes,A veces
+25,"Libros y Música, Alimentos y Bebidas",Región de Antofagasta,Iquique,No
+26,"Libros y Música, Deportes y Fitness",Región de la Araucanía,Valparaíso,Sí
+27,"Libros y Música, Alimentos y Bebidas, Ropa y Accesorios",Región de Los Lagos,Las Condes,Rara vez
+28,"Alimentos y Bebidas, Muebles, Hogar y Decoración",Región de Antofagasta,Concón,Casi siempre
+29,"Deportes y Fitness, Salud y Belleza, Ropa y Accesorios",Región de Los Lagos,Temuco,Sí
+30,"Hogar y Decoración, Alimentos y Bebidas, Salud y Belleza",Región de Valparaíso,La Florida,Sí
+31,Salud y Belleza,Región del Maule,Talcahuano,Rara vez
+32,Deportes y Fitness,Región de Antofagasta,Viña del Mar,Sí
+33,Alimentos y Bebidas,Región Metropolitana,Providencia,Rara vez
+34,"Alimentos y Bebidas, Salud y Belleza",Región de Tarapacá,Quilpué,Rara vez
+35,Alimentos y Bebidas,Región del Biobío,Puerto Montt,Rara vez
+36,"Deportes y Fitness, Muebles, Computación",Región de Los Lagos,Las Condes,No
+37,"Computación, Muebles",Región de Valparaíso,Concón,Rara vez
+38,"Hogar y Decoración, Alimentos y Bebidas",Región de O'Higgins,Temuco,Sí
+39,"Deportes y Fitness, Electrónica",Región del Biobío,Viña del Mar,A veces
+40,Computación,Región del Biobío,Talca,Rara vez
+41,"Computación, Libros y Música",Región de Valparaíso,Antofagasta,Casi siempre
+42,Computación,Región de Valparaíso,Providencia,Rara vez
+43,"Salud y Belleza, Muebles, Juguetes y Juegos",Región Metropolitana,Temuco,No
+44,"Computación, Libros y Música, Deportes y Fitness",Región del Biobío,La Serena,No
+45,"Ropa y Accesorios, Deportes y Fitness",Región de Valparaíso,Antofagasta,No
+46,"Computación, Salud y Belleza",Región de Antofagasta,Viña del Mar,Rara vez
+47,"Computación, Ropa y Accesorios, Juguetes y Juegos",Región de Valparaíso,Puerto Montt,Sí
+48,"Ropa y Accesorios, Muebles, Deportes y Fitness",Región de Los Lagos,Chillán,No
+49,"Computación, Muebles",Región Metropolitana,Las Condes,Rara vez
+50,Computación,Región del Biobío,Temuco,Casi siempre
