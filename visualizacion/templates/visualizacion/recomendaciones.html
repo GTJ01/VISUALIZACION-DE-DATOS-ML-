@@ -1,0 +1,221 @@
+<!--
+Template para plan de acción y recomendaciones
+- Presenta problema crítico identificado con métricas clave
+- Estructura recomendaciones en 4 áreas principales:
+  * Optimización de Mercado Envíos (crítico)
+  * Mejora de descripciones de productos
+  * Estrategia de precios
+  * Plan regional
+- Define plan de implementación en 3 fases
+- Establece KPIs específicos para seguimiento
+- Incluye metas cuantitativas para cada indicador
+-->
+
+{% extends "base.html" %}
+
+{% block title %}Recomendaciones{% endblock %}
+
+{% block content %}
+  <h2 class="mb-3">
+    <i class="fas fa-lightbulb"></i> {{ titulo }}
+  </h2>
+  <p class="lead">Plan de acción basado en el análisis de {{ estadisticas.total_respuestas }} respuestas</p>
+
+  <div class="alert alert-danger mb-4">
+    <div class="row align-items-center">
+      <div class="col-md-2 text-center">
+        <i class="fas fa-exclamation-triangle fa-4x"></i>
+      </div>
+      <div class="col-md-10">
+        <h4 class="alert-heading">Problema Principal Identificado</h4>
+        <p class="mb-2">
+          <strong>{{ estadisticas.porcentaje_problema_entregas|floatformat:1 }}%</strong> de los compradores 
+          NO recibe sus pedidos siempre/casi siempre a tiempo.
+        </p>
+        <p class="mb-0">
+          <i class="fas fa-arrow-right"></i> Esto afecta directamente la satisfacción 
+          (promedio actual: {{ estadisticas.satisfaccion_promedio }}/5)
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card border-danger h-100">
+        <div class="card-header bg-danger text-white">
+          <h5 class="mb-0"><i class="fas fa-shipping-fast"></i> 1. URGENTE: Optimizar Mercado Envíos</h5>
+        </div>
+        <div class="card-body">
+          <h6 class="text-danger">Impacto: CRÍTICO</h6>
+          <p><strong>Problema:</strong> 48.8% con problemas de entregas</p>
+
+          <h6 class="mt-3">Soluciones Propuestas:</h6>
+          <ul>
+            <li><strong>Mejorar predicción:</strong> Algoritmos más precisos considerando región y tipo de producto</li>
+            <li><strong>Tracking en tiempo real:</strong> Sistema mejorado para identificar retrasos proactivamente</li>
+            <li><strong>Centros de distribución:</strong> Establecer más centros en regiones críticas 
+            (Tarapacá: 0%, Maule: 13.3%, Biobío: 25%)</li>
+            <li><strong>Diversificar proveedores:</strong> Alianzas con múltiples empresas de envío</li>
+          </ul>
+
+          <div class="badge bg-danger">Prioridad: ALTA</div>
+          <div class="badge bg-warning text-dark">Plazo: 0-3 meses</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card border-warning h-100">
+        <div class="card-header bg-warning text-dark">
+          <h5 class="mb-0"><i class="fas fa-info-circle"></i> 2. Mejorar Descripciones</h5>
+        </div>
+        <div class="card-body">
+          <h6 class="text-warning">Impacto: MODERADO</h6>
+          <p><strong>Problema:</strong> 22.8% reporta descripciones poco claras (28 usuarios)</p>
+
+          <h6 class="mt-3">Soluciones Propuestas:</h6>
+          <ul>
+            <li><strong>Plantillas estandarizadas:</strong> Templates obligatorios con campos clave</li>
+            <li><strong>Validación de contenido:</strong> Sistema que verifica completitud antes de publicar</li>
+            <li><strong>Fotos de calidad:</strong> Requerir mínimo 5 imágenes HD</li>
+            <li><strong>Especificaciones técnicas:</strong> Campos obligatorios según categoría</li>
+          </ul>
+
+          <div class="badge bg-warning text-dark">Prioridad: MEDIA</div>
+          <div class="badge bg-info">Plazo: 3-6 meses</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card border-info h-100">
+        <div class="card-header bg-info text-white">
+          <h5 class="mb-0"><i class="fas fa-dollar-sign"></i> 3. Estrategia de Precios</h5>
+        </div>
+        <div class="card-body">
+          <h6 class="text-info">Impacto: MODERADO</h6>
+          <p><strong>Problema:</strong> 22.0% considera precios no competitivos</p>
+
+          <h6 class="mt-3">Soluciones:</h6>
+          <ul>
+            <li>Comparador automático de precios vs competencia</li>
+            <li>Programa de "Mejores Precios" garantizados</li>
+            <li>Promociones personalizadas según historial</li>
+            <li>Envío gratuito para compensar precios</li>
+          </ul>
+
+          <div class="badge bg-info">Prioridad: MEDIA</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card border-success h-100">
+        <div class="card-header bg-success text-white">
+          <h5 class="mb-0"><i class="fas fa-map-marked-alt"></i> 4. Plan Regional</h5>
+        </div>
+        <div class="card-body">
+          <h6 class="text-success">Impacto: ALTO</h6>
+          <p><strong>Problema:</strong> Desempeño desigual por región</p>
+
+          <h6 class="mt-3">Soluciones:</h6>
+          <ul>
+            <li>Inversión prioritaria en 3 regiones críticas</li>
+            <li>Ajustar tiempos estimados por región (más realistas)</li>
+            <li>Incentivos a vendedores con stock local</li>
+            <li>Programa piloto en 2-3 regiones</li>
+          </ul>
+
+          <div class="badge bg-success">Prioridad: ALTA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0"><i class="fas fa-calendar-alt"></i> Plan de Implementación en 3 Fases</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <h6 class="text-danger"><i class="fas fa-circle"></i> Fase 1 (0-3 meses) - CRÍTICO</h6>
+          <ul class="small">
+            <li>Auditoría completa de Mercado Envíos</li>
+            <li>Implementar tracking mejorado</li>
+            <li>Tiempos realistas por región</li>
+            <li>Comunicación proactiva de retrasos</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h6 class="text-warning"><i class="fas fa-circle"></i> Fase 2 (3-6 meses)</h6>
+          <ul class="small">
+            <li>Abrir 2-3 centros de distribución</li>
+            <li>Nuevas plantillas de descripciones</li>
+            <li>Programa de mejores precios</li>
+            <li>Diversificar métodos de pago</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h6 class="text-success"><i class="fas fa-circle"></i> Fase 3 (6-12 meses)</h6>
+          <ul class="small">
+            <li>Evaluar resultados y ajustar</li>
+            <li>Expandir a todas las regiones</li>
+            <li>Nueva encuesta de satisfacción</li>
+            <li>Optimización continua</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alert alert-success mt-3 mb-0">
+        <i class="fas fa-bullseye"></i> <strong>Meta Principal:</strong> 
+        Aumentar cumplimiento de entregas del <strong>51.2%</strong> actual al <strong>85%</strong> en 12 meses
+      </div>
+    </div>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-header">
+      <h5 class="mb-0"><i class="fas fa-chart-line"></i> KPIs Clave a Monitorear</h5>
+    </div>
+    <div class="card-body">
+      <div class="row text-center">
+        <div class="col-md-3">
+          <div class="p-3 border rounded">
+            <i class="fas fa-truck fa-2x text-primary mb-2"></i>
+            <h6>Entregas a Tiempo</h6>
+            <p class="text-muted mb-1">Actual: 51.2%</p>
+            <p class="text-success mb-0"><strong>Meta: 85%</strong></p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="p-3 border rounded">
+            <i class="fas fa-star fa-2x text-warning mb-2"></i>
+            <h6>Satisfacción</h6>
+            <p class="text-muted mb-1">Actual: 3.69/5</p>
+            <p class="text-success mb-0"><strong>Meta: 4.5/5</strong></p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="p-3 border rounded">
+            <i class="fas fa-redo fa-2x text-success mb-2"></i>
+            <h6>Tasa de Recompra</h6>
+            <p class="text-muted mb-1">Base actual</p>
+            <p class="text-success mb-0"><strong>Meta: +20%</strong></p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="p-3 border rounded">
+            <i class="fas fa-comment fa-2x text-info mb-2"></i>
+            <h6>Recomendaciones</h6>
+            <p class="text-muted mb-1">Actual: 74%</p>
+            <p class="text-success mb-0"><strong>Meta: 90%</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,119 @@
+{
+  "problema_principal": "Incumplimiento en tiempos de entrega",
+  "estadisticas_clave": {
+    "porcentaje_no_recibe_siempre": 48.0,
+    "porcentaje_no_recibe_fecha": 74.0,
+    "total_respuestas_dataset1": 75,
+    "total_respuestas_dataset2": 50
+  },
+  "tiempos_entrega": {
+    "Siempre": 39,
+    "Aveces": 35,
+    "Nunca": 1
+  },
+  "entrega_por_fecha": {
+    "Rara vez": 15,
+    "No": 12,
+    "Sí": 9,
+    "Casi siempre": 9,
+    "A veces": 5
+  },
+  "regiones": [
+    {
+      "region": "Región de la Araucanía",
+      "entregas_tiempo": 1,
+      "total": 2,
+      "porcentaje": 50.0
+    },
+    {
+      "region": "Región de Los Lagos",
+      "entregas_tiempo": 3,
+      "total": 10,
+      "porcentaje": 30.0
+    },
+    {
+      "region": "Región de O'Higgins",
+      "entregas_tiempo": 1,
+      "total": 2,
+      "porcentaje": 50.0
+    },
+    {
+      "region": "Región del Biobío",
+      "entregas_tiempo": 0,
+      "total": 10,
+      "porcentaje": 0.0
+    },
+    {
+      "region": "Región de Valparaíso",
+      "entregas_tiempo": 2,
+      "total": 7,
+      "porcentaje": 28.6
+    },
+    {
+      "region": "Región Metropolitana",
+      "entregas_tiempo": 1,
+      "total": 7,
+      "porcentaje": 14.3
+    },
+    {
+      "region": "Región de Antofagasta",
+      "entregas_tiempo": 1,
+      "total": 6,
+      "porcentaje": 16.7
+    },
+    {
+      "region": "Región del Maule",
+      "entregas_tiempo": 0,
+      "total": 3,
+      "porcentaje": 0.0
+    },
+    {
+      "region": "Región de Coquimbo",
+      "entregas_tiempo": 0,
+      "total": 2,
+      "porcentaje": 0.0
+    },
+    {
+      "region": "Región de Tarapacá",
+      "entregas_tiempo": 0,
+      "total": 1,
+      "porcentaje": 0.0
+    }
+  ],
+  "categorias_mas_compradas": {
+    "Computación": 19,
+    "Alimentos y Bebidas": 12,
+    "Salud y Belleza": 12,
+    "Deportes y Fitness": 11,
+    "Libros y Música": 10,
+    "Ropa y Accesorios": 10,
+    "Muebles": 9,
+    "Electrónica": 7
+  },
+  "descripcion_productos": {
+    "Si": 55,
+    "No": 20
+  },
+  "competitividad_precios": {
+    "Si": 56,
+    "No": 19
+  },
+  "metodos_pago": {
+    "Debito": 61,
+    "Credito": 14
+  },
+  "satisfaccion": {
+    "compras_recientes": {
+      "Si": 58,
+      "No": 17
+    },
+    "proceso_rapido": {
+      "Si": 72,
+      "No": 3
+    },
+    "variedad_productos": {
+      "Si": 65,
+      "No": 10
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}Categorías y Productos{% endblock %}
+
+{% block content %}
+  <h2 class="mb-3">
+    <i class="fas fa-tags"></i> {{ titulo }}
+  </h2>
+  <p class="lead">Análisis de las categorías favoritas de los {{ total_compradores }} compradores activos</p>
+
+  <!-- Gráfico -->
+  <div class="row mb-4">
+    <div class="col-lg-10 mx-auto">
+      <div class="card shadow-sm">
+        <div class="card-header bg-info text-white">
+          <h5 class="mb-0"><i class="fas fa-chart-bar"></i> Top 10 Categorías Más Compradas</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="chartCategorias" height="350"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tarjetas de categorías -->
+  <div class="card shadow-sm">
+    <div class="card-header">
+      <h5 class="mb-0"><i class="fas fa-list"></i> Detalle por Categoría</h5>
+    </div>
+    <div class="card-body">
+      <div class="row" id="categoriasDetalle">
+        <!-- Se llenará con JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Insights -->
+  <div class="card shadow-sm mt-4">
+    <div class="card-header">
+      <h5 class="mb-0"><i class="fas fa-lightbulb"></i> Insights de Categorías</h5>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li><strong>Juguetes y Juegos</strong> y <strong>Computación</strong> empatan como las 
+        categorías más populares con 19 menciones cada una (15.4%)</li>
+        <li><strong>Ropa y Accesorios</strong> ocupa el tercer lugar con 14 menciones</li>
+        <li>Las categorías tecnológicas (Computación + Electrónica) representan el 22.8% del total</li>
+        <li>Hay diversidad de intereses: todas las categorías tienen al menos 9 menciones</li>
+        <li><strong>Oportunidad:</strong> El problema de entregas afecta todas las categorías por igual, 
+        una mejora beneficiaría a todos los segmentos</li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}
+
+{% block body_extra %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script>
+    const totalCompradores = '{{ total_compradores }}';
+    const categoriasData = JSON.parse('{{ categorias_json|escapejs }}');
+
+    new Chart(document.getElementById("chartCategorias"), {
+      type: "bar",
+      data: {
+        labels: Object.keys(categoriasData),
+        datasets: [{
+          label: 'Número de Usuarios',
+          data: Object.values(categoriasData),
+          backgroundColor: [
+            '#667eea', '#764ba2', '#f093fb', '#4facfe', '#43e97b',
+            '#fa709a', '#fee140', '#30cfd0', '#a8edea', '#fed6e3'
+          ],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Categorías Favoritas de Compra',
+            font: { size: 16, weight: 'bold' }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { stepSize: 5 }
+          }
+        }
+      }
+    });
+
+    const detalleDiv = document.getElementById('categoriasDetalle');
+    Object.entries(categoriasData).forEach(([categoria, cantidad]) => {
+      const porcentaje = ((cantidad / totalCompradores) * 100).toFixed(1);
+      detalleDiv.innerHTML += `
+        <div class="col-md-6 col-lg-3 mb-3">
+          <div class="card text-center h-100 border-info">
+            <div class="card-body">
+              <i class="fas fa-box fa-2x text-info mb-2"></i>
+              <h4 class="card-title text-primary">${cantidad}</h4>
+              <p class="card-text text-muted small">${categoria}</p>
+              <span class="badge bg-info">${porcentaje}%</span>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  </script>
+{% endblock %}
+
+<!-- 
+Template para visualización de análisis de categorías
+- Muestra gráfico de top 10 categorías más compradas
+- Presenta tarjetas con detalles por categoría
+- Incluye sección de insights clave sobre categorías
+- Usa Chart.js para visualizaciones
+-->

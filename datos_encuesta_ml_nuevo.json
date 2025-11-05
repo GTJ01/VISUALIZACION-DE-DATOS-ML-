@@ -1,0 +1,136 @@
+{
+  "problema_principal": "Incumplimiento en tiempos de entrega de Mercado Envíos",
+  "estadisticas_clave": {
+    "total_respuestas": 150,
+    "total_compradores": 123,
+    "porcentaje_compradores": 82.0,
+    "porcentaje_problema_entregas": 48.8,
+    "satisfaccion_promedio": 3.69,
+    "edad_promedio": 39.7
+  },
+  "cumplimiento_entregas": {
+    "Casi siempre": 42,
+    "A veces": 30,
+    "Rara vez": 21,
+    "Siempre": 21,
+    "Nunca": 9
+  },
+  "regiones": [
+    {
+      "region": "Región de Antofagasta",
+      "entregas_tiempo": 7,
+      "total": 13,
+      "porcentaje": 53.8
+    },
+    {
+      "region": "Región del Maule",
+      "entregas_tiempo": 2,
+      "total": 15,
+      "porcentaje": 13.3
+    },
+    {
+      "region": "Región del Biobío",
+      "entregas_tiempo": 3,
+      "total": 12,
+      "porcentaje": 25.0
+    },
+    {
+      "region": "Región de la Araucanía",
+      "entregas_tiempo": 4,
+      "total": 12,
+      "porcentaje": 33.3
+    },
+    {
+      "region": "Región de O'Higgins",
+      "entregas_tiempo": 10,
+      "total": 13,
+      "porcentaje": 76.9
+    },
+    {
+      "region": "Región de Los Lagos",
+      "entregas_tiempo": 10,
+      "total": 13,
+      "porcentaje": 76.9
+    },
+    {
+      "region": "Región de Coquimbo",
+      "entregas_tiempo": 9,
+      "total": 13,
+      "porcentaje": 69.2
+    },
+    {
+      "region": "Región Metropolitana",
+      "entregas_tiempo": 10,
+      "total": 12,
+      "porcentaje": 83.3
+    },
+    {
+      "region": "Región de Valparaíso",
+      "entregas_tiempo": 8,
+      "total": 14,
+      "porcentaje": 57.1
+    },
+    {
+      "region": "Región de Tarapacá",
+      "entregas_tiempo": 0,
+      "total": 6,
+      "porcentaje": 0.0
+    }
+  ],
+  "categorias_favoritas": {
+    "Juguetes y Juegos": 19,
+    "Computación": 19,
+    "Ropa y Accesorios": 14,
+    "Alimentos y Bebidas": 12,
+    "Salud y Belleza": 12,
+    "Muebles": 11,
+    "Electrónica": 9,
+    "Hogar y Decoración": 9,
+    "Deportes y Fitness": 9,
+    "Libros y Música": 9
+  },
+  "frecuencia_compra": {
+    "Mensual": 53,
+    "Quincenal": 32,
+    "Semanal": 19,
+    "Ocasional": 19
+  },
+  "descripciones_claras": {
+    "Sí": 95,
+    "No": 28
+  },
+  "precios_competitivos": {
+    "Sí": 96,
+    "No": 27
+  },
+  "metodos_pago": {
+    "Tarjeta de débito": 70,
+    "Tarjeta de crédito": 29,
+    "Transferencia": 18,
+    "Efectivo": 6
+  },
+  "proceso_rapido": {
+    "Sí": 113,
+    "No": 10
+  },
+  "variedad_satisfactoria": {
+    "Sí": 109,
+    "No": 14
+  },
+  "satisfaccion_distribucion": {
+    "1": 7,
+    "2": 15,
+    "3": 26,
+    "4": 36,
+    "5": 39
+  },
+  "recomendaria": {
+    "Sí": 91,
+    "No": 32
+  },
+  "genero_distribucion": {
+    "Femenino": 77,
+    "Masculino": 42,
+    "Otro": 4
+  }
+}

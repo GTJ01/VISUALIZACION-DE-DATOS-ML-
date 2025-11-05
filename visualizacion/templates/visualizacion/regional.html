@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %}Análisis Regional{% endblock %}
+
+{% block content %}
+  <h2 class="mb-3">
+    <i class="fas fa-map-marked-alt"></i> {{ titulo }}
+  </h2>
+  <p class="lead">Comparación del desempeño de entregas por regiones de Chile</p>
+
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <div class="card bg-success text-white">
+        <div class="card-body text-center">
+          <h6>Mejor Región</h6>
+          <h4>{{ regiones.0.region }}</h4>
+          <p class="mb-0">{{ regiones.0.porcentaje }}% cumplimiento</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-warning text-dark">
+        <div class="card-body text-center">
+          <h6>Promedio Nacional</h6>
+          <h4>51.2%</h4>
+          <p class="mb-0">Cumplimiento general</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-danger text-white">
+        <div class="card-body text-center">
+          {% with regiones|last as peor_region %}
+          <h4>{{ peor_region.region }}</h4>
+          <p class="mb-0">{{ peor_region.porcentaje }}% cumplimiento</p>
+          {% endwith %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0"><i class="fas fa-table"></i> Ranking por Región</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th>#</th>
+              <th>Región</th>
+              <th class="text-center">Entregas OK</th>
+              <th class="text-center">Total</th>
+              <th class="text-center">% Cumplimiento</th>
+              <th class="text-center">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for region in regiones %}
+            <tr>
+              <td><strong>{{ forloop.counter }}</strong></td>
+              <td>{{ region.region }}</td>
+              <td class="text-center">{{ region.entregas_tiempo }}</td>
+              <td class="text-center">{{ region.total }}</td>
+              <td class="text-center">
+                <span class="badge 
+                  {% if region.porcentaje >= 70 %}bg-success
+                  {% elif region.porcentaje >= 40 %}bg-warning text-dark
+                  {% else %}bg-danger{% endif %}">
+                  {{ region.porcentaje }}%
+                </span>
+              </td>
+              <td class="text-center">
+                {% if region.porcentaje >= 70 %}
+                  <i class="fas fa-check-circle text-success"></i> Bueno
+                {% elif region.porcentaje >= 40 %}
+                  <i class="fas fa-exclamation-circle text-warning"></i> Regular
+                {% else %}
+                  <i class="fas fa-times-circle text-danger"></i> Crítico
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card shadow-sm mt-4">
+    <div class="card-header">
+      <h5 class="mb-0"><i class="fas fa-chart-pie"></i> Insights Regionales</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <h6 class="text-success"><i class="fas fa-trophy"></i> Regiones con Buen Desempeño</h6>
+          <ul>
+            {% for region in regiones|slice:":3" %}
+            <li><strong>{{ region.region }}</strong>: {{ region.porcentaje }}%</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h6 class="text-danger"><i class="fas fa-exclamation-triangle"></i> Regiones Críticas</h6>
+          <ul>
+            {% for region in regiones|slice:"-3:" %}
+            <li><strong>{{ region.region }}</strong>: {{ region.porcentaje }}%</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="alert alert-warning mt-3 mb-0">
+        <i class="fas fa-info-circle"></i> <strong>Recomendación:</strong>
+        Priorizar inversión en infraestructura logística en las regiones con 0-25% de cumplimiento.
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+<!--
+Template para análisis regional de entregas
+- Muestra métricas principales: mejor región, promedio y peor región
+- Presenta tabla de ranking completo por región
+- Incluye sección de insights regionales
+- Usa sistema de color para indicar estado (success/warning/danger)
+-->

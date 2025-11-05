@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}Análisis de Entregas{% endblock %}
+
+{% block content %}
+  <h2 class="mb-3">
+    <i class="fas fa-truck"></i> {{ titulo }}
+  </h2>
+  <p class="lead">Análisis detallado del problema crítico de Mercado Envíos</p>
+
+  <div class="alert alert-danger mb-4">
+    <div class="row align-items-center">
+      <div class="col-md-2 text-center">
+        <i class="fas fa-exclamation-triangle fa-4x"></i>
+      </div>
+      <div class="col-md-10">
+        <h4 class="alert-heading">Problema Crítico Identificado</h4>
+        <p class="mb-0">
+          <strong>{{ estadisticas.porcentaje_problema_entregas|floatformat:1 }}%</strong> de los compradores 
+          NO recibe sus pedidos <strong>siempre o casi siempre</strong> a tiempo. 
+          Esto representa <strong>60 de 123 compradores activos</strong>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-header bg-danger text-white">
+          <h5 class="mb-0"><i class="fas fa-clock"></i> Cumplimiento de Tiempos de Entrega</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="chartEntregas" height="280"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-header bg-info text-white">
+          <h5 class="mb-0"><i class="fas fa-calendar-alt"></i> Frecuencia de Compra</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="chartFrecuencia" height="280"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-header bg-warning text-dark">
+      <h5 class="mb-0"><i class="fas fa-chart-line"></i> Análisis Detallado</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <h6 class="text-danger"><i class="fas fa-times-circle"></i> Impacto del Problema</h6>
+          <ul>
+            <li><strong>21 usuarios</strong> reportan recibir "Siempre" a tiempo (17.1%)</li>
+            <li><strong>42 usuarios</strong> reportan "Casi siempre" (34.1%)</li>
+            <li><strong>30 usuarios</strong> reportan "A veces" (24.4%)</li>
+            <li><strong>21 usuarios</strong> reportan "Rara vez" (17.1%)</li>
+            <li><strong>9 usuarios</strong> reportan "Nunca" (7.3%)</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h6 class="text-info"><i class="fas fa-shopping-bag"></i> Comportamiento de Compra</h6>
+          <p>A pesar del problema de entregas:</p>
+          <ul>
+            <li>La mayoría compra <strong>mensualmente</strong> (43.1%)</li>
+            <li>26% compra quincenalmente</li>
+            <li>15.4% compra semanalmente</li>
+            <li>Indica alta dependencia de la plataforma</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alert alert-info mt-3 mb-0">
+        <i class="fas fa-lightbulb"></i> <strong>Insight Clave:</strong> 
+        Los usuarios siguen comprando a pesar del problema de entregas, lo que indica que una 
+        mejora en la logística podría aumentar significativamente la satisfacción y frecuencia de compra.
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block body_extra %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script>
+    const entregasData = JSON.parse('{{ entregas_json|escapejs }}');
+
+    new Chart(document.getElementById("chartEntregas"), {
+      type: "doughnut",
+      data: {
+        labels: Object.keys(entregasData),
+        datasets: [{
+          data: Object.values(entregasData),
+          backgroundColor: [
+            '#28a745',  
+            '#ffc107',  
+            '#ff6b6b',  
+            '#4ecdc4',  
+            '#dc3545'   
+          ],
+          borderWidth: 2,
+          borderColor: '#fff'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { 
+            position: "bottom",
+            labels: { font: { size: 11 } }
+          },
+          title: {
+            display: true,
+            text: 'Distribución del Cumplimiento (n=123)',
+            font: { size: 14, weight: 'bold' }
+          }
+        }
+      }
+    });
+
+    
+    const frecuenciaData = JSON.parse('{{ frecuencia_json|escapejs }}');
+
+    new Chart(document.getElementById("chartFrecuencia"), {
+      type: "bar",
+      data: {
+        labels: Object.keys(frecuenciaData),
+        datasets: [{
+          label: 'Número de Usuarios',
+          data: Object.values(frecuenciaData),
+          backgroundColor: ['#667eea', '#764ba2', '#f093fb', '#4facfe'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Frecuencia de Compra en Mercado Libre',
+            font: { size: 14, weight: 'bold' }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { stepSize: 10 }
+          }
+        }
+      }
+    });
+  </script>
+{% endblock %}
+
+<!--
+Template para análisis detallado de entregas
+- Muestra problema crítico identificado en entregas
+- Presenta dos gráficos principales:
+  * Cumplimiento de tiempos de entrega
+  * Frecuencia de compra
+- Incluye análisis detallado del impacto
+- Destaca insights clave sobre comportamiento de compra
+- Usa Chart.js para visualizaciones
+-->

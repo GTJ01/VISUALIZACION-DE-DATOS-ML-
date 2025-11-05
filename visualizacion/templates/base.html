@@ -1,0 +1,314 @@
+{% load static %}
+<!doctype html>
+<html lang="es" data-bs-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Mercado Libre Analytics{% endblock %}</title>
+
+  <!-- Bootstrap 5 + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ml-yellow: #FFE600;
+      --ml-blue: #2D3277;
+      --ml-light-blue: #00A8E1;
+      --ml-dark: #1a1a2e;
+      --ml-gray: #f8f9fa;
+      --ml-border: #e0e0e0;
+    }
+
+    * {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+    }
+
+    /* NAVBAR MODERNA */
+    .navbar-custom {
+      background: linear-gradient(135deg, var(--ml-blue) 0%, #1a1f3a 100%);
+      padding: 1rem 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--ml-yellow) !important;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .navbar-brand .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--ml-yellow);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ml-blue);
+      font-size: 1.2rem;
+    }
+
+    .nav-link {
+      color: rgba(255,255,255,0.8) !important;
+      font-weight: 500;
+      padding: 0.6rem 1.2rem !important;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      margin: 0 0.2rem;
+    }
+
+    .nav-link:hover {
+      background: rgba(255,255,255,0.1);
+      color: var(--ml-yellow) !important;
+      transform: translateY(-2px);
+    }
+
+    .nav-link.active {
+      background: var(--ml-yellow);
+      color: var(--ml-blue) !important;
+      box-shadow: 0 4px 15px rgba(255,230,0,0.3);
+    }
+
+    .nav-link i {
+      margin-right: 0.5rem;
+    }
+
+    /* CARDS MODERNOS */
+    .card-modern {
+      background: white;
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .card-modern:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    }
+
+    .card-modern .card-header {
+      background: linear-gradient(135deg, var(--ml-blue) 0%, var(--ml-light-blue) 100%);
+      color: white;
+      padding: 1.5rem;
+      border: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .card-modern .card-body {
+      padding: 1.5rem;
+    }
+
+    /* STATS CARDS */
+    .stat-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 16px;
+      padding: 2rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    }
+
+    .stat-card .stat-icon {
+      font-size: 3rem;
+      opacity: 0.2;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    .stat-card .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-card .stat-label {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-top: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* GRADIENTES PERSONALIZADOS */
+    .gradient-red { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+    .gradient-orange { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+    .gradient-blue { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+    .gradient-green { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+    .gradient-purple { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+
+    /* BADGES MODERNOS */
+    .badge-modern {
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+
+    /* FOOTER MODERNO */
+    footer {
+      background: linear-gradient(135deg, var(--ml-dark) 0%, var(--ml-blue) 100%);
+      color: white;
+      padding: 2rem 0;
+      margin-top: 4rem;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* CONTAINER */
+    .container-custom {
+      max-width: 1400px;
+      padding: 2rem 1rem;
+    }
+
+    /* HERO SECTION */
+    .hero-section {
+      background: white;
+      border-radius: 20px;
+      padding: 3rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    }
+
+    .hero-section h1 {
+      font-weight: 700;
+      color: var(--ml-blue);
+      margin-bottom: 1rem;
+    }
+
+    .hero-section .lead {
+      color: #6c757d;
+      font-size: 1.1rem;
+    }
+  </style>
+  {% block head_extra %}{% endblock %}
+</head>
+<body>
+
+<!-- 
+Base template que define la estructura común para todas las páginas
+- Incluye estilos y scripts comunes (Bootstrap, FontAwesome, etc.)
+- Define la estructura general: navbar, contenedor y footer
+- Permite extender bloques: title, content, head_extra y body_extra
+-->
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
+  <div class="container-fluid container-custom">
+    <a class="navbar-brand" href="{% url 'visualizacion:inicio' %}">
+      <div class="brand-icon">
+        <i class="fas fa-chart-line"></i>
+      </div>
+      <span>ML Analytics</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'inicio' %}active{% endif %}"
+             href="{% url 'visualizacion:inicio' %}">
+            <i class="fas fa-home"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'entregas' %}active{% endif %}"
+             href="{% url 'visualizacion:entregas' %}">
+            <i class="fas fa-truck"></i> Entregas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'regional' %}active{% endif %}"
+             href="{% url 'visualizacion:regional' %}">
+            <i class="fas fa-map-marked-alt"></i> Regional
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'categorias' %}active{% endif %}"
+             href="{% url 'visualizacion:categorias' %}">
+            <i class="fas fa-tags"></i> Categorías
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'indicadores' %}active{% endif %}"
+             href="{% url 'visualizacion:indicadores' %}">
+            <i class="fas fa-chart-bar"></i> Satisfacción
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'recomendaciones' %}active{% endif %}"
+             href="{% url 'visualizacion:recomendaciones' %}">
+            <i class="fas fa-lightbulb"></i> Insights
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container-fluid container-custom">
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <p class="mb-1"><i class="fas fa-chart-pie"></i> <strong>Mercado Libre Analytics Dashboard</strong></p>
+        <p class="mb-0 small opacity-75">Análisis de Experiencia de Usuario • 200 Respuestas • 2025</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts globales -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+{% block body_extra %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,287 @@
+{% extends "base.html" %}
+
+{% block title %}Otros Indicadores{% endblock %}
+
+{% block content %}
+ <h2 class="mb-3">
+  <i class="fas fa-chart-bar"></i> {{ titulo }}
+ </h2>
+ <p class="lead">Análisis de indicadores complementarios de calidad del servicio</p>
+
+   <div class="row mb-4">
+  <div class="col-md-4">
+   <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+     <h6 class="mb-0"><i class="fas fa-file-alt"></i> Descripciones</h6>
+    </div>
+    <div class="card-body">
+     <div style="position: relative; height: 200px;">
+      <canvas id="chartDescripciones"></canvas>
+     </div>
+     <div class="text-center mt-2">
+      <span class="badge bg-success">77.2% claras</span>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="col-md-4">
+   <div class="card shadow-sm">
+    <div class="card-header bg-success text-white">
+     <h6 class="mb-0"><i class="fas fa-dollar-sign"></i> Precios</h6>
+    </div>
+    <div class="card-body">
+     <div style="position: relative; height: 200px;">
+      <canvas id="chartPrecios"></canvas>
+     </div>
+     <div class="text-center mt-2">
+      <span class="badge bg-success">78.0% competitivos</span>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="col-md-4">
+   <div class="card shadow-sm">
+    <div class="card-header bg-info text-white">
+     <h6 class="mb-0"><i class="fas fa-credit-card"></i> Métodos de Pago</h6>
+    </div>
+    <div class="card-body">
+     <div style="position: relative; height: 200px;">
+      <canvas id="chartMetodos"></canvas>
+     </div>
+     <div class="text-center mt-2">
+      <span class="badge bg-info">56.9% usa débito</span>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+   <div class="row mb-4">
+  <div class="col-md-4">
+   <div class="card shadow-sm">
+    <div class="card-header bg-warning text-dark">
+     <h6 class="mb-0"><i class="fas fa-tachometer-alt"></i> Proceso</h6>
+    </div>
+    <div class="card-body">
+     <div style="position: relative; height: 200px;">
+      <canvas id="chartProceso"></canvas>
+     </div>
+     <div class="text-center mt-2">
+      <span class="badge bg-success">92.7% rápido</span>
+     </div>
+    </div>
+   </div>
+  </div>
+
+      <div class="col-md-4">
+   <div class="card shadow-sm">
+    <div class="card-header bg-secondary text-white">
+     <h6 class="mb-0"><i class="fas fa-boxes"></i> Variedad</h6>
+    </div>
+    <div class="card-body">
+     <div style="position: relative; height: 200px;">
+      <canvas id="chartVariedad"></canvas>
+     </div>
+     <div class="text-center mt-2">
+      <span class="badge bg-success">88.6% satisfecho</span>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <div class="col-md-4">
+   <div class="card shadow-sm">
+    <div class="card-header bg-danger text-white">
+     <h6 class="mb-0"><i class="fas fa-users"></i> Género</h6>
+    </div>
+    <div class="card-body">
+               <div style="position: relative; height: 240px;"> 
+      <canvas id="chartGenero"></canvas>
+     </div>
+     <div class="text-center mt-2">
+     	<span class="badge bg-secondary">Distribución demográfica</span>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+   <div class="row mb-4">
+  <div class="col-12">
+   <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+     <h5 class="mb-0"><i class="fas fa-star"></i> Distribución de Satisfacción General</h5>
+    </div>
+    <div class="card-body">
+     <div class="row align-items-center">
+      <div class="col-md-8">
+                     <div style="position: relative; height: 240px;">
+        <canvas id="chartSatisfaccion"></canvas>
+      	</div>
+      </div>
+      <div class="col-md-4">
+                     <div class="text-center">
+        <h2 class="display-3 text-primary">{{ estadisticas.satisfaccion_promedio }}</h2>
+        <p class="lead">Promedio de 5</p>
+        <hr>
+       <p class="text-muted">Basado en {{ estadisticas.total_compradores }} compradores activos</p>
+              </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+   <div class="card shadow-sm">
+  <div class="card-header">
+   <h5 class="mb-0"><i class="fas fa-chart-line"></i> Análisis Consolidado</h5>
+  </div>
+  <div class="card-body">
+   <div class="row">
+    <div class="col-md-6">
+     <h6 class="text-success"><i class="fas fa-check-circle"></i> Fortalezas Identificadas</h6>
+     <ul class="list-group list-group-flush">
+      <li class="list-group-item">✓ <strong>92.7%</strong> considera el proceso de compra rápido</li>
+      <li class="list-group-item">✓ <strong>88.6%</strong> satisfecho con variedad de productos</li>
+     	<li class="list-group-item">✓ <strong>78.0%</strong> encuentra precios competitivos</li>
+     	<li class="list-group-item">✓ <strong>77.2%</strong> considera descripciones claras</li>
+     </ul>
+    </div>
+    <div class="col-md-6">
+     <h6 class="text-warning"><i class="fas fa-exclamation-triangle"></i> Áreas de Mejora</h6>
+     <ul class="list-group list-group-flush">
+      <li class="list-group-item">⚠ <strong>22.8%</strong> reporta descripciones poco claras (28 usuarios)</li>
+     	<li class="list-group-item">⚠ <strong>22.0%</strong> considera precios no competitivos (27 usuarios)</li>
+     	<li class="list-group-item">⚠ Aunque minoritarios, impactan en conversión</li>
+     	<li class="list-group-item">⚠ Método de pago: diversificar más allá de débito</li>
+     </ul>
+    </div>
+   </div>
+
+   <div class="alert alert-info mt-3 mb-0">
+    <i class="fas fa-info-circle"></i> <strong>Conclusión Principal:</strong> 
+    La plataforma funciona bien en aspectos de interfaz, variedad y precios. 
+    El <strong>problema crítico de logística</strong> es el principal detractor de la satisfacción, 
+  nbsp;  lo que presenta una oportunidad clara de mejora.
+   </div>
+  </div>
+ </div>
+{% endblock %}
+
+{% block body_extra %}
+   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+ <script>
+
+  const doughnutOptions = {
+   responsive: true,
+   maintainAspectRatio: false,
+   plugins: { legend: { position: "bottom", labels: { font: { size: 10 } } } }
+  };
+
+  
+  const descripcionesData = JSON.parse('{{ descripciones_json|escapejs }}');
+  new Chart(document.getElementById("chartDescripciones"), {
+   type: "doughnut",
+   data: {
+    labels: Object.keys(descripcionesData),
+    datasets: [{
+     data: Object.values(descripcionesData),
+     backgroundColor: ['#28a745', '#dc3545']
+    }]
+   },
+   options: doughnutOptions
+  });
+
+  
+  const preciosData = JSON.parse('{{ precios_json|escapejs }}');
+  new Chart(document.getElementById("chartPrecios"), {
+   type: "doughnut",
+   data: {
+    labels: Object.keys(preciosData),
+    datasets: [{
+     data: Object.values(preciosData),
+     backgroundColor: ['#28a745', '#ffc107']
+    }]
+   },
+   options: doughnutOptions
+  });
+
+ 
+ 	const metodosData = JSON.parse('{{ metodos_json|escapejs }}');
+ 	new Chart(document.getElementById("chartMetodos"), {
+   type: "pie",
+   data: {
+   	labels: Object.keys(metodosData),
+   	datasets: [{
+     data: Object.values(metodosData),
+     backgroundColor: ['#17a2b8', '#6610f2', '#fd7e14', '#20c997']
+   	}]
+   },
+   options: doughnutOptions
+ 	});
+
+ 
+ 	const procesoData = JSON.parse('{{ proceso_json|escapejs }}');
+ 	new Chart(document.getElementById("chartProceso"), {
+  	type: "doughnut",
+  	data: {
+   	labels: Object.keys(procesoData),
+   	datasets: [{
+     data: Object.values(procesoData),
+     backgroundColor: ['#28a745', '#dc3545']
+   	}]
+  	},
+  	options: doughnutOptions
+ 	});
+
+
+ 	const variedadData = JSON.parse('{{ variedad_json|escapejs }}');
+ 	new Chart(document.getElementById("chartVariedad"), {
+  	type: "doughnut",
+  	data: {
+   	labels: Object.keys(variedadData),
+   	datasets: [{
+     data: Object.values(variedadData),
+     backgroundColor: ['#28a745', '#dc3545']
+   	}]
+  	},
+  	options: doughnutOptions
+ 	});
+
+
+ 	const generoData = JSON.parse('{{ genero_json|escapejs }}');
+ 	new Chart(document.getElementById("chartGenero"), {
+  	type: "pie",
+  	data: {
+   	labels: Object.keys(generoData),
+   	datasets: [{
+     data: Object.values(generoData),
+     backgroundColor: ['#e83e8c', '#007bff', '#6c757d']
+   	}]
+  	},
+  	options: doughnutOptions
+ 	});
+
+ 	
+ 	const satisfaccionData = JSON.parse('{{ satisfaccion_json|escapejs }}');
+ 	new Chart(document.getElementById("chartSatisfaccion"), {
+  	type: "bar",
+  	data: {
+   	labels: Object.keys(satisfaccionData).map(k => k + ' estrellas'),
+   	datasets: [{
+     label: 'Número de Usuarios',
+     data: Object.values(satisfaccionData),
+     backgroundColor: ['#dc3545', '#fd7e14', '#ffc107', '#28a745', '#20c997'],
+     borderWidth: 0
+   	}]
+  	},
+  	options: {
+   	responsive: true,
+   	maintainAspectRatio: false,
+   	plugins: { legend: { display: false } },
+   	scales: { y: { beginAtZero: true, ticks: { stepSize: 10 } } }
+  	}
+ 	});
+ </script>
+{% endblock %}
